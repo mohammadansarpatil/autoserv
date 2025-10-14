@@ -1,0 +1,32 @@
+{
+  "name": "autoserv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:client": "npm --workspace client run dev",
+    "dev:server": "npm --workspace server run dev",
+    "lint": "echo \"(add later)\"",
+    "test": "echo \"(add later)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadansarpatil/autoserv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadansarpatil/autoserv/issues"
+  },
+  "homepage": "https://github.com/mohammadansarpatil/autoserv#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}

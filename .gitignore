@@ -1,0 +1,43 @@
+# --- Node & package managers ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# --- Env files (secrets/config) ---
+.env
+*.env
+server/.env
+client/.env
+
+# --- Build outputs ---
+dist/
+build/
+.out/
+.next/
+coverage/
+
+# --- Logs ---
+logs/
+*.log
+*.log.*
+npm-debug.log*
+lerna-debug.log*
+
+# --- OS / Editor junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Tooling ---
+.eslintcache
+.stylelintcache
+
+# --- Vite / React typical outputs ---
+client/dist/
+server/dist/
