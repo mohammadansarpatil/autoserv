@@ -1,61 +1,21 @@
-import { useEffect, useState } from "react";
-import { apiGet } from "./lib/api";
+import ServiceList from "./components/ServiceList";
+
 
 function App() {
-  const [status, setStatus] = useState("checking...");
-  const [time, setTime] = useState("");
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      try {
-        const data = await apiGet("/api/health");
-        if (!cancelled) {
-          setStatus(data.status ?? "unknown");
-          setTime(data.time ?? "");
-          setError("");
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setStatus("unreachable");
-          setTime("");
-          setError(err.message || "Request failed");
-        }
-      }
-    }
-    load();
-
-    // cleanup if component unmounts during a pending fetch
-    return () => { cancelled = true; };
-  }, []);
-
   const apiBase = import.meta.env.VITE_API_URL;
 
   return (
-    <div style={{ fontFamily: "system-ui", padding: 24, lineHeight: 1.6 }}>
+    <div style={{ fontFamily: "system-ui", padding: 24, lineHeight: 1.6, maxWidth: 820, margin: "0 auto" }}>
       <h1>AutoServe (React)</h1>
+      <p style={{ marginTop: 0 }}><strong>API base:</strong> {apiBase || "(missing VITE_API_URL)"}</p>
 
-      <p><strong>API base:</strong> {apiBase || "(missing VITE_API_URL)"}</p>
-
-      <h2>Server health</h2>
-      <p>
-        Status: <strong>{status}</strong>
-        {time && <> | Time: <code>{time}</code></>}
+      <h2 style={{ marginTop: 24 }}>Available Services</h2>
+      <p style={{ marginTop: 0, color: "#6b7280" }}>
+        Data comes from <code>/api/services</code> (Mongo → Mongoose → Express → React).
       </p>
 
-      {error && (
-        <p style={{ color: "crimson" }}>
-          Error: {error}
-        </p>
-      )}
-
-      <p style={{ fontSize: 13, color: "#555" }}>
-        Tip: If you change <code>client/.env</code>, restart <code>npm run dev</code>.
-      </p>
+      <ServiceList />
     </div>
   );
 }
-
 export default App;

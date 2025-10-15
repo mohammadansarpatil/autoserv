@@ -1,10 +1,9 @@
 require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const Service = require("./models/Service");
 
+const Service = require("./models/Service");
 
 const app = express();
 
@@ -20,6 +19,7 @@ mongoose
     process.exit(1); // stop the app if DB is critical
   });
 
+
 app.use(
   cors({
     origin: CLIENT_ORIGIN,
@@ -30,6 +30,10 @@ app.use(
 );
 
 app.use(express.json());
+
+const authRouter = require("./routes/auth");
+
+app.use("/api/auth", authRouter);
 
 app.get("/api/health", (req, res) => {
     res.json({ status: 'OK', time: new Date().toISOString() });

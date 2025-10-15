@@ -1,0 +1,40 @@
+.service-list {
+  display: grid;
+  gap: 12px;
+  max-width: 760px;
+}
+
+.service-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.service-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.service-card__title {
+  margin: 0;
+}
+
+.service-card__price {
+  font-weight: 600;
+}
+
+.service-card__desc {
+  margin: 8px 0 0 0;
+  color: #374151;
+}
+
+.service-card__meta {
+  margin: 8px 0 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.state--loading { opacity: 0.8; }
+.state--error   { color: crimson; }

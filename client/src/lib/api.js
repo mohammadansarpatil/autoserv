@@ -16,3 +16,7 @@ export async function apiGet(path) {
   }
   return res.json();
 }
+
+export function getServices() {
+  return apiGet("/api/services");
+}
